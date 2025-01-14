@@ -1,0 +1,24 @@
+class Solution(object):
+    def multiply_by_10_bitshift(self, x):
+        return (x << 3) + (x << 1)
+
+    def divide(self, dividend, divisor):
+        out = 0
+        i = 1 if abs(dividend + divisor) > abs(dividend) else -1
+        dividend, divisor = abs(dividend), abs(divisor)
+        div = 0
+        for k in str(dividend):
+            div = self.multiply_by_10_bitshift(div) + int(k)
+            out = self.multiply_by_10_bitshift(out)
+            while div >= divisor:
+                div -= divisor
+                out += i
+        if 2147483648 < out: return 2147483647
+        elif -2147483648 > out: return -2147483648
+
+        return out
+
+        
+test = -2147483648, -1
+
+print(Solution().divide(*test))

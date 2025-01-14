@@ -1,0 +1,17 @@
+class Solution(object):
+    def countPrefixSuffixPairs(self, words):
+        """
+        :type words: List[str]
+        :rtype: int
+        """
+        output = 0
+        w_len = int(len(words))
+        for i in range(0, w_len):
+            for ii in range(i+1, w_len):
+                j = len(words[i])
+                if j > len(words[ii]):
+                    pass
+                elif words[i] == words[ii][:j] and words[i] == words[ii][-j:]:
+                    output += 1
+        return output
+

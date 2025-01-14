@@ -1,0 +1,21 @@
+class Solution(object):
+    def mySqrt(self, x):
+        """
+        :type x: int
+        :rtype: int
+        """
+        if x == 0: return 0
+        if x < 4: return 1
+        
+        low, high = 0, x
+        while low <= high:
+            mid = (low + high) // 2
+            if (mid * mid) <= x < ((mid + 1) * (mid + 1)):
+                return mid
+            elif mid * mid < x:
+                low = mid + 1
+            else:
+                high = mid - 1 
+
+test = 4
+print(Solution().mySqrt(test)) 
